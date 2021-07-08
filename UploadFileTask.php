@@ -21,7 +21,9 @@
   }
 
     $errorMessages = array();
-    if($_SERVER['REQUEST_METHOD'] == "POST" ){
+
+    if($_SERVER['REQUEST_METHOD'] == "POST" )
+    {
 
        $email     = CleanInputs($_POST['email']);
        $password  = CleanInputs($_POST['password']); 
@@ -90,19 +92,25 @@
             }else{
      
                 $errorMessages['uploadedFile'] = " Extension Not Allowed ";            }
+            }
+        else
+    {
         
-        }
+    }
      
      if(count($errorMessages) == 0){
 
-        echo "Email :".$v_email.'<br>'."Password :".$password.'<br>'."LinkedInAccount :". $url ;
+        echo "Email :".$email.'<br>'."Password :".$password.'<br>'."LinkedInAccount :". $url;
+
      }else{
 
      foreach($errorMessages as $key => $value){
 
         echo '* '.$key.' : '.$value.'<br>';
+       } 
      }
-     }
+
+    }
 ?>
 <div class="container">
   <h2> CV uploaded Form</h2>
@@ -118,6 +126,10 @@
     <input type="password"  name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
  
+  <div class="form-group">
+    <label for="url">LinkedInAccount</label>
+    <input type="url"  name="url" class="form-control" id="url" >
+  </div>
 
   <div class="form-group">
     <label for="exampleInputPassword1"> Uplod Your CV</label>
